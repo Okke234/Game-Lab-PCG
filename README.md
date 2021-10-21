@@ -9,6 +9,6 @@ In this project i will be researching many different aspects of PCG and will ult
 
 | Folder                                                       | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Research](https://gitlab.fdmci.hva.nl/missetn/projectsmarteducation-2021/-/tree/master/Discovery) | A collection of all research done during the project.        |
-| [Development](https://gitlab.fdmci.hva.nl/missetn/projectsmarteducation-2021/-/tree/master/Flask_Dashboard) | Various Unity projects for development, testing and of course the final product. |
+| [Research](https://github.com/Okke234/Game-Lab-PCG/tree/main/Research) | A collection of all research done during the project.        |
+| [Development](https://github.com/Okke234/Game-Lab-PCG/tree/main/Development) | Various Unity projects for development, testing and of course the final product. |
 
