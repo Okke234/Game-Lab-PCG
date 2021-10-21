@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &2886636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2886637}
+  m_Layer: 0
+  m_Name: Tiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2886637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2886636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0aacd75e2333c648aa5757930600313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 2886637}
   mapTile: {fileID: 8040350843865246987, guid: bc7c530cfc25de146b29e7dfdc4ba9e0, type: 3}
   startPos: {x: 0, y: 0}
   startPosList:
@@ -243,8 +274,9 @@ MonoBehaviour:
   - {x: 20, y: 20}
   - {x: -20, y: 0}
   - {x: 0, y: -20}
-  walkLength: 100
-  iterations: 10
+  walkLength: 50
+  iterations: 100
+  startFromRandomTile: 1
 --- !u!4 &1643058393
 Transform:
   m_ObjectHideFlags: 0
