@@ -6,6 +6,7 @@ public class RandomWalkMapGen : MonoBehaviour
 {
     [SerializeField] private Transform parent;
     [SerializeField] private Object mapTile;
+    [SerializeField] private int maxFloorWidth, maxFloorHeight;
     [SerializeField] private Vector2Int startPos = Vector2Int.zero;
     [SerializeField] private List<Vector2Int> startPosList;
     [SerializeField] private int walkLength = 10;
@@ -26,18 +27,22 @@ public class RandomWalkMapGen : MonoBehaviour
         }
         HashSet<Vector2Int> tilePositions;
         tilePositions = RandomWalkMultipleRooms();
-        DrawTiles(tilePositions);
+
+        MarchingSquares marching = GetComponent<MarchingSquares>();
+        marching.GenerateMesh(TilesToFloor(tilePositions), 1);
+
+        //DrawTiles(tilePositions);
     }
 
     //Obsolete.
-    private HashSet<Vector2Int> RandomWalk()
+    /*private HashSet<Vector2Int> RandomWalk()
     {
         var curPos = startPos;
         HashSet<Vector2Int> tilePositions = new HashSet<Vector2Int>();
         var path = Algorithms.RandomWalk(curPos, walkLength);
         tilePositions.UnionWith(path);
         return tilePositions;
-    }
+    }*/
 
     private HashSet<Vector2Int> RandomWalkMultipleRooms()
     {
@@ -55,7 +60,7 @@ public class RandomWalkMapGen : MonoBehaviour
                 {
                     curPos = startPosList[i];
                 }
-                var path = Algorithms.RandomWalk(curPos, walkLength);
+                var path = Algorithms.RandomWalk(curPos, walkLength, maxFloorWidth, maxFloorHeight);
                 tilePositions.UnionWith(path);
                 foreach (var pos in path)
                 {
@@ -77,6 +82,7 @@ public class RandomWalkMapGen : MonoBehaviour
             pos.position = (Vector3Int)tile;
             GameObject newTile = Instantiate(mapTile, pos.position, new Quaternion(), parent) as GameObject;
             newTile.AddComponent<Tile>().RoomId = PosToRoomnumberDict[tile];
+            newTile.GetComponent<Tile>().Transform = newTile.transform;
             tileList.Add(newTile.GetComponent<Tile>());
         }
     }
@@ -92,5 +98,16 @@ public class RandomWalkMapGen : MonoBehaviour
             }
         }
         return RoomTiles[Random.Range(0, RoomTiles.Count)];
+    }
+
+    private int[,] TilesToFloor(HashSet<Vector2Int> tiles)
+    {
+        int[,] floor = new int[maxFloorWidth, maxFloorHeight];
+
+        foreach (var tile in tiles)
+        {
+            floor[tile.x, tile.y] = 1;
+        }
+        return floor;
     }
 }
