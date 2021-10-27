@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    public int RoomId;
+    public Transform Transform { get; set; }
+    public int RoomId { get; set; }
 }
