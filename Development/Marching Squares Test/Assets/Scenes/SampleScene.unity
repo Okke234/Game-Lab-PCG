@@ -372,8 +372,8 @@ MonoBehaviour:
   - {x: 150, y: 150}
   - {x: 50, y: 50}
   - {x: 50, y: 150}
-  walkLength: 150
-  iterations: 10
+  walkLength: 250
+  iterations: 50
   startFromRandomTile: 1
 --- !u!4 &2025530968
 Transform:
